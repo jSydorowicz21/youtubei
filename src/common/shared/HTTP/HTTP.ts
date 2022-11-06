@@ -30,6 +30,7 @@ export class HTTP {
 	private clientName: string;
 	private clientVersion: string;
 	private cookie: string;
+	private proxy: string;
 	private defaultHeaders: HeadersInit;
 	private defaultFetchOptions: Partial<RequestInit>;
 	private defaultClientOptions: Record<string, unknown>;
@@ -40,8 +41,9 @@ export class HTTP {
 		this.clientName = options.clientName;
 		this.clientVersion = options.clientVersion;
 		this.cookie = options.initialCookie || "";
+		this.proxy = options.proxy || "";
 		this.defaultHeaders = {
-			"x-youtube-client-version": this.clientVersion,
+			"x-youtube-client-version": INNERTUBE_CLIENT_VERSION,
 			"x-youtube-client-name": "1",
 			"content-type": "application/json",
 			"accept-encoding": "gzip, deflate, br",
@@ -92,6 +94,7 @@ export class HTTP {
 				...this.defaultFetchOptions.headers,
 			},
 			body: partialOptions.data ? JSON.stringify(partialOptions.data) : undefined,
+			agent: Boolean(this.proxy) ? new HttpsProxyAgent(this.proxy) :  undefined,
 		};
 
 		const finalUrl = `https://${this.baseUrl}/${url}?${new URLSearchParams(
