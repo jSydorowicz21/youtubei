@@ -50,6 +50,7 @@ export class BaseVideo extends Base implements BaseVideoProperties {
 		Object.assign(this, attr);
 
 		this.related = new VideoRelated({ client: this.client, video: this });
+		this.related.video = undefined;
 	}
 
 	/**

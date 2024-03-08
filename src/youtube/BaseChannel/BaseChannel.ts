@@ -48,6 +48,10 @@ export class BaseChannel extends Base implements BaseChannelProperties {
 		this.shorts = new ChannelShorts({ channel: this, client: this.client });
 		this.live = new ChannelLive({ channel: this, client: this.client });
 		this.playlists = new ChannelPlaylists({ channel: this, client: this.client });
+		this.shorts.channel = undefined;
+		this.live.channel = undefined;
+		this.playlists.channel = undefined;
+		this.videos.channel = undefined;
 	}
 
 	/** The URL of the channel page */

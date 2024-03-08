@@ -32,6 +32,7 @@ export class Video extends BaseVideo implements VideoProperties {
 		Object.assign(this, attr);
 
 		this.comments = new VideoComments({ client: attr.client, video: this });
+		this.comments.video = undefined;
 	}
 
 	/**

@@ -30,9 +30,10 @@ type ConstructorParams = ContinuableConstructorParams & {
  */
 export class VideoComments extends Continuable<Comment> {
 	/** The playlist this videos belongs to */
-	video: Video;
+	video: Video | undefined;
 
 	/** @hidden */
+
 	constructor({ client, video }: ConstructorParams) {
 		super({ client, strictContinuationCheck: true });
 		this.video = video;

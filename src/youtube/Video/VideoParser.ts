@@ -31,7 +31,7 @@ export class VideoParser {
 		return target;
 	}
 
-	static parseComments(data: YoutubeRawData, video: Video): Comment[] {
+	static parseComments(data: YoutubeRawData, video?: Video): Comment[] {
 		const endpoints = data.onResponseReceivedEndpoints.at(-1);
 
 		const continuationItems = (
@@ -39,8 +39,11 @@ export class VideoParser {
 		).continuationItems;
 
 		const comments = mapFilter(continuationItems, "commentThreadRenderer");
-		return comments.map((c: YoutubeRawData) =>
-			new Comment({ video, client: video.client }).load(c)
+		return comments.map((c: YoutubeRawData) => {
+				if (video) {
+					new Comment({video, client: video?.client}).load(c)
+				}
+			}
 		);
 	}
 
