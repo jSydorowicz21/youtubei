@@ -43,6 +43,7 @@ export class MusicClient {
 			baseUrl: BASE_URL,
 			clientName: "WEB_REMIX",
 			clientVersion: INNERTUBE_CLIENT_VERSION,
+			proxy: "",
 			...fullOptions,
 		});
 	}

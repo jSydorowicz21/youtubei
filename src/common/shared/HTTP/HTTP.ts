@@ -1,7 +1,10 @@
 import fetch, { HeadersInit, RequestInit, Response as FetchResponse } from "node-fetch";
 import { URLSearchParams } from "url";
+import { HttpsProxyAgent } from "https-proxy-agent";
+import {INNERTUBE_CLIENT_VERSION} from "../../../music/constants";
 
 type HTTPOptions = {
+	proxy: string;
 	apiKey: string;
 	baseUrl: string;
 	clientName: string;
