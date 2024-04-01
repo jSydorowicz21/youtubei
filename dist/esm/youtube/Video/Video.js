@@ -73,15 +73,13 @@ var Video = /** @class */ (function (_super) {
     /**
      * Get Video transcript (if exists)
      *
-     * Equivalent to
-     * ```js
-     * client.getVideoTranscript(video.id);
-     * ```
+     * @deprecated use `video.captions.get()` instead
      */
-    Video.prototype.getTranscript = function () {
+    Video.prototype.getTranscript = function (languageCode) {
+        var _a;
         return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.client.getVideoTranscript(this.id)];
+            return __generator(this, function (_b) {
+                return [2 /*return*/, (_a = this.captions) === null || _a === void 0 ? void 0 : _a.get(languageCode)];
             });
         });
     };

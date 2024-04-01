@@ -54,7 +54,7 @@ var MusicClient = /** @class */ (function () {
     function MusicClient(options) {
         if (options === void 0) { options = {}; }
         var fullOptions = __assign(__assign({ initialCookie: "", fetchOptions: {} }, options), { youtubeClientOptions: __assign({ hl: "en", gl: "US" }, options.youtubeClientOptions) });
-        this.http = new HTTP(__assign({ apiKey: INNERTUBE_API_KEY, baseUrl: BASE_URL, clientName: "WEB_REMIX", clientVersion: INNERTUBE_CLIENT_VERSION }, fullOptions));
+        this.http = new HTTP(__assign({ apiKey: INNERTUBE_API_KEY, baseUrl: BASE_URL, clientName: "WEB_REMIX", clientVersion: INNERTUBE_CLIENT_VERSION, proxy: "" }, fullOptions));
     }
     MusicClient.prototype.search = function (query, type) {
         return __awaiter(this, void 0, void 0, function () {

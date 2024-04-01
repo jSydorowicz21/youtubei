@@ -1,5 +1,6 @@
 import { RequestInit } from "node-fetch";
 declare type HTTPOptions = {
+    proxy: string;
     apiKey: string;
     baseUrl: string;
     clientName: string;
@@ -24,12 +25,13 @@ export declare class HTTP {
     private clientName;
     private clientVersion;
     private cookie;
+    private proxy;
     private defaultHeaders;
     private defaultFetchOptions;
     private defaultClientOptions;
     constructor(options: HTTPOptions);
-    get(url: string, options?: Partial<Options>): Promise<Response>;
-    post(url: string, options?: Partial<Options>): Promise<Response>;
+    get(path: string, options?: Partial<Options>): Promise<Response>;
+    post(path: string, options?: Partial<Options>): Promise<Response>;
     private request;
     private parseCookie;
 }
